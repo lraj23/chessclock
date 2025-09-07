@@ -3,9 +3,58 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Chess Clock</title>
+		<link rel="stylesheet" type="text/css" href="./index.css">
+		<title>CCCC</title>
 	</head>
 	<body>
-		
+		<h1 id="title">Capa Chess Club Clock</h1>
+		<div class="w timeset section">
+			<p class="w label">White's Time</p>
+			<input type="number" min="0" class="w initial">
+			<span class="w space"> </span>
+			<select class="w init units">
+				<option value="hours">h</option>
+				<option value="minutes" selected>m</option>
+				<option value="seconds">s</option>
+			</select>
+			<span class="w pipe"> | </span>
+			<input type="number" min="0" class="w increment">
+			<span class="w space"> </span>
+			<select class="w incr units">
+				<option value="minutes">m</option>
+				<option value="seconds" selected>s</option>
+			</select>
+			<span class="w space"> </span>
+			<select class="w incrordel">
+				<option value="increment" selected>increment</option>
+				<option value="delay">delay</option>
+			</select>
+		</div>
+		<div class="b timeset section">
+			<p class="b label">Black's Time</p>
+			<input id="sameTime" type="checkbox" checked>
+			<label for="sameTime">Use Same Time as White</label><br>
+			<input type="number" min="0" class="b initial">
+			<span class="b space"> </span>
+			<select class="b init units">
+				<option value="hours">h</option>
+				<option value="minutes" selected>m</option>
+				<option value="seconds">s</option>
+			</select>
+			<span class="b pipe"> | </span>
+			<input type="number" min="0" class="b increment">
+			<span class="b space"> </span>
+			<select class="b incr units">
+				<option value="minutes">m</option>
+				<option value="seconds" selected>s</option>
+			</select>
+			<span class="b space"> </span>
+			<select class="b incrordel">
+				<option value="increment" selected>increment</option>
+				<option value="delay">delay</option>
+			</select>
+		</div>
+		<button id="begin">Start Clock</button>
+		<script src="index.js"></script>
 	</body>
 </html>
