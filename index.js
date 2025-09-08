@@ -20,13 +20,13 @@ const bGuide = document.querySelector("p.b.guide");
 const afterEnd = document.querySelector("div#afterEnd");
 const endMsg = document.querySelector("p.afterEnd.msg");
 
-[bInitial, bInitUnits, bIncrement, bIncrUnits, bIncrOrDel].forEach(item => item.disabled = sameControl.checked);
-sameControl.addEventListener("change", () => [bInitial, bInitUnits, bIncrement, bIncrUnits, bIncrOrDel].forEach(item => item.disabled = sameControl.checked));
+[bInitial, bInitUnits, bIncrement, bIncrUnits].forEach(item => item.disabled = sameControl.checked);
+sameControl.addEventListener("change", () => [bInitial, bInitUnits, bIncrement, bIncrUnits].forEach(item => item.disabled = sameControl.checked));
 [wInitial, wIncrement, bIncrement, bIncrement].forEach(input => input.addEventListener("change", () => input.value = Math.floor(input.value)));
 
 begin.onclick = () => {
 	if (wInitial.value < 1 || wIncrement.value < 0 || bInitial.value < 1 || bIncrement.value < 0) {
-		fail("Enter valid amounts!");
+		error.innerHTML = "Enter valid amounts!";
 		return;
 	}
 	beforeStart.className = "hidden";
@@ -67,8 +67,6 @@ begin.onclick = () => {
 	requestAnimationFrame(tick);
 	document.body.addEventListener("keyup", (e) => {
 		if (e.code === "Space") {
-			console.log("Pressed Space!");
-			console.log(turn, bEnd, bRemaining, wEnd, wRemaining);
 			if (turn % 2) {
 				wEnd = Date.now() + wRemaining + wIncrTime;
 				bRemaining = bEnd - Date.now();
@@ -82,8 +80,3 @@ begin.onclick = () => {
 	});
 	document.body.focus();
 };
-
-function fail(msg) {
-	error.innerHTML = msg;
-	[wInitial, wIncrement, bInitial, bIncrement].forEach((input, i) => input.value = 3 - (i % 2));
-}
