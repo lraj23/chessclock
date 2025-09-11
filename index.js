@@ -1,27 +1,27 @@
-const beforeStart = document.querySelector("div#beforeStart");
-const wInitial = document.querySelector("input.w.initial")
-const wInitUnits = document.querySelector("select.w.init.units");
-const wIncrement = document.querySelector("input.w.increment")
-const wIncrUnits = document.querySelector("select.w.incr.units");
-const wIncrOrDel = document.querySelector("select.w.incrordel");
-const bInitial = document.querySelector("input.b.initial")
-const bInitUnits = document.querySelector("select.b.init.units");
-const bIncrement = document.querySelector("input.b.increment")
-const bIncrUnits = document.querySelector("select.b.incr.units");
-const bIncrOrDel = document.querySelector("select.b.incrordel");
-const sameControl = document.querySelector("input#sameControl");
-const begin = document.querySelector("button#begin");
-const error = document.querySelector("p#error");
-const afterStart = document.querySelector("div#afterStart");
+const beforeStart = document.getElementById("beforeStart");
+const wInitial = document.getElementById("wInitial")
+const wInitUnits = document.getElementById("wInitUnits");
+const wIncrement = document.getElementById("wIncrement")
+const wIncrUnits = document.getElementById("wIncrUnits");
+// const wIncrOrDel = document.getElementById("wIncrOrDel"); // commented because currently not in use, but planned for use
+const bInitial = document.getElementById("bInitial")
+const bInitUnits = document.getElementById("bInitUnits");
+const bIncrement = document.getElementById("bIncrement")
+const bIncrUnits = document.getElementById("bIncrUnits");
+const bIncrOrDel = document.getElementById("bIncrOrDel"); // not commented because currently in use, but not much (planned for use)
+const sameControl = document.getElementById("sameControl");
+const begin = document.getElementById("begin");
+const error = document.getElementById("error");
+const afterStart = document.getElementById("afterStart");
 const wTimeLeft = document.querySelector("p.w.timeLeft");
-const wGuide = document.querySelector("p.w.guide");
+const wGuide = document.getElementById("wGuide");
 const bTimeLeft = document.querySelector("p.b.timeLeft");
-const bGuide = document.querySelector("p.b.guide");
-const afterEnd = document.querySelector("div#afterEnd");
-const endMsg = document.querySelector("p.afterEnd.msg");
+const bGuide = document.getElementById("bGuide");
+const afterEnd = document.getElementById("afterEnd");
+const msg = document.getElementById("msg");
 
-[bInitial, bInitUnits, bIncrement, bIncrUnits].forEach(item => item.disabled = sameControl.checked);
-sameControl.addEventListener("change", () => [bInitial, bInitUnits, bIncrement, bIncrUnits].forEach(item => item.disabled = sameControl.checked));
+[bInitial, bInitUnits, bIncrement, bIncrUnits, bIncrOrDel].forEach(item => item.disabled = sameControl.checked);
+sameControl.addEventListener("change", () => [bInitial, bInitUnits, bIncrement, bIncrUnits, bIncrOrDel].forEach(item => item.disabled = sameControl.checked));
 [wInitial, wIncrement, bIncrement, bIncrement].forEach(input => input.addEventListener("change", () => input.value = Math.floor(input.value)));
 
 begin.onclick = () => {
@@ -37,23 +37,23 @@ begin.onclick = () => {
 	var wEnd = Date.now() + wRemaining, bEnd = Date.now() + bRemaining, turn = 0;
 	endGame = (loser, time) => {
 		afterStart.className = "hidden";
-		endMsg.childNodes.forEach((node, i) => node.innerText = [["White", "Black"][loser], endMsg.childNodes[1].innerText, time / 1000, endMsg.childNodes[3].innerText][i]);
+		msg.childNodes.forEach((node, i) => node.innerText = [["White", "Black"][loser], msg.childNodes[1].innerText, time / 1000, msg.childNodes[3].innerText][i]);
 		afterEnd.className = "visible";
 	};
 	tick = () => {
 		let wClockTime = wEnd - Date.now();
 		if (!(turn % 2)) {
 			wTimeLeft.childNodes.forEach((node, i) => node.innerText = [Math.floor(wClockTime / 3600000), ":", Math.floor(wClockTime / 60000) - Math.floor(wClockTime / 3600000) * 60, ":", Math.floor(wClockTime / 1000) - Math.floor(wClockTime / 60000) * 60, ".", Math.floor(wClockTime / 10) - Math.floor(wClockTime / 1000) * 100][i].toString().padStart(2 - i % 2, "0"));
-			bGuide.classList.replace("visible", "hidden");
-			wGuide.classList.replace("hidden", "visible");
+			bGuide.className = "hidden";
+			wGuide.className = "visible";
 			bTimeLeft.parentNode.classList.replace("current", "other");
 			wTimeLeft.parentNode.classList.replace("other", "current");
 		}
 		let bClockTime = bEnd - Date.now();
 		if (turn % 2) {
 			bTimeLeft.childNodes.forEach((node, i) => node.innerText = [Math.floor(bClockTime / 3600000), ":", Math.floor(bClockTime / 60000) - Math.floor(bClockTime / 3600000) * 60, ":", Math.floor(bClockTime / 1000) - Math.floor(bClockTime / 60000) * 60, ".", Math.floor(bClockTime / 10) - Math.floor(bClockTime / 1000) * 100][i].toString().padStart(2 - i % 2, "0"));
-			wGuide.classList.replace("visible", "hidden");
-			bGuide.classList.replace("hidden", "visible");
+			wGuide.className = "hidden";
+			bGuide.className = "visible";
 			wTimeLeft.parentNode.classList.replace("current", "other");
 			bTimeLeft.parentNode.classList.replace("other", "current");
 		}

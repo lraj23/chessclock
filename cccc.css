@@ -21,7 +21,7 @@ select {
 	margin: 0.5vw;
 }
 
-div.timeset.section {
+div.timeset {
 	text-align: center;
 	width: 96vw;
 	border-width: 5px;
@@ -33,22 +33,22 @@ div.timeset.section {
 	font-size: 1.5vw;
 }
 
-div.section.w {
+div.w {
 	border-color: #eef;
 }
 
-div.section.b {
+div.b {
 	border-color: #aab;
 }
 
-div.timeset.section p.label {
+div.timeset p.label {
 	margin: 0;
 }
 
-div.timeset.section input,
-div.timeset.section button,
-div.timeset.section select,
-div.timeset.section label {
+div.timeset input,
+div.timeset button,
+div.timeset select,
+div.timeset label {
 	font-size: 1.2vw;
 }
 
@@ -75,7 +75,7 @@ input {
 	cursor: not-allowed;
 }
 
-div.clock.section {
+div.clock {
 	text-align: center;
 	border-radius: 10px;
 	margin: 0 0 1vw 2vw;
@@ -86,31 +86,31 @@ div.clock.section {
 	vertical-align: bottom;
 }
 
-div.clock.section.current {
+div.clock.current {
 	border-width: 10px;
 	border-style: solid;
 	width: 56vw;
 }
 
-div.clock.section.other {
+div.clock.other {
 	border-width: 5px;
 	border-style: dashed;
 	width: 36vw;
 }
 
-div.clock.section p.timeLeft {
+div.clock p.timeLeft {
 	margin: 0;
 }
 
-div.clock.section.current p.timeLeft {
+div.clock.current p.timeLeft {
 	font-size: 8vw;
 }
 
-div.clock.section.other p.timeLeft {
+div.clock.other p.timeLeft {
 	font-size: 5vw;
 }
 
-div#afterEnd p.afterEnd.msg {
+#msg {
 	margin: 2vw;
 	font-size: 1.5vw;
 }

@@ -3,24 +3,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="./index.css">
+		<link rel="stylesheet" type="text/css" href="./cccc.css">
 		<title>CCCC</title>
 	</head>
 	<body>
 		<h1 id="title">Capa Chess Club Clock</h1>
 		<div id="beforeStart" class="visible">
-			<div class="w timeset section">
-				<p class="w label">White Time Control</p>
-				<input type="number" min="1" class="w initial" value="3">
-				<span class="w space"> </span>
-				<span class="w init units">min</span>
-				<span class="w plus"> + </span>
-				<input type="number" min="0" class="w increment" value="2">
-				<span class="w space"> </span>
-				<span class="w incr units">sec</span>
+			<div class="w timeset">
+				<p class="label">White Time Control</p>
+				<input type="number" min="1" id="initial" value="3">
+				<span> min + </span>
+				<input type="number" min="0" id="increment" value="0">
+				<span> sec</span>
 			</div>
-			<div class="b timeset section">
-				<p class="b label">Black Time Control</p>
+			<div class="b timeset">
+				<p class="label">Black Time Control</p>
 				<input id="sameControl" type="checkbox" checked disabled>
 				<label for="sameControl">Use Same Control as White</label><br>
 			</div>
@@ -28,19 +25,19 @@
 			<p id="error"></p>
 		</div>
 		<div id="afterStart" class="hidden">
-			<div class="w clock section current">
-				<p class="w label">White</p>
-				<p class="w timeLeft"><span class="w hr">--</span>:<span class="w min">--</span>:<span class="w sec">--</span>.<span class="w ds">--</span></p>
-				<p class="w guide visible">Click space to end turn</p>
+			<div class="w clock current">
+				<p>White</p>
+				<p class="w timeLeft"><span>--</span>:<span>--</span>:<span>--</span>.<span>--</span></p>
+				<p id="wGuide" class="visible">Click space to end turn</p>
 			</div>
-			<div class="b clock section other">
-				<p class="b label">Black</p>
-				<p class="b timeLeft"><span class="b hr">--</span>:<span class="b min">--</span>:<span class="b sec">--</span>.<span class="w ds">--</span></p>
-				<p class="b guide hidden">Click space to end turn</p>
+			<div class="b clock other">
+				<p>Black</p>
+				<p class="b timeLeft"><span>--</span>:<span>--</span>:<span>--</span>.<span>--</span></p>
+				<p id="bGuide" class="hidden">Click space to end turn</p>
 			</div>
 		</div>
 		<div id="afterEnd" class="hidden">
-			<p class="afterEnd msg"><span class="timeOut">-----</span> ran out of time on the clock. The opponent still had <span class="surviveTime">--.--</span> seconds left.</p>
+			<p id="msg"><span>-----</span> ran out of time on the clock. The opponent still had <span>--.--</span> seconds left.</p>
 		</div>
 		<script src="capa.js"></script>
 	</body>
