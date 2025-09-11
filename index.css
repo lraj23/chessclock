@@ -48,8 +48,6 @@ div.timeset.section p.label {
 div.timeset.section input,
 div.timeset.section button,
 div.timeset.section select,
-div.timeset.section span.space,
-div.timeset.section span.pipe,
 div.timeset.section label {
 	font-size: 1.2vw;
 }
